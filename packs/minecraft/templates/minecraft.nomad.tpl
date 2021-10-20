@@ -1,10 +1,10 @@
 job [[ template "job_name" . ]] {
-  [[ template "region" . ]]
+  region      = [[ .minecraft.region | quote ]]
   datacenters = [ [[ range $idx, $dc := .minecraft.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
   group "minecraft" {
     network {
       port "access" {
-        to = [[ .minecraft.http_port ]]
+        to = [[ .minecraft.mc_port ]]
       }
     }
     task "minecraft" {
@@ -31,7 +31,6 @@ job [[ template "job_name" . ]] {
       resources {
         cpu    = [[ .minecraft.resources.cpu ]]
         memory = [[ .minecraft.resources.memory ]]
-        storage = [[ .minecraft.resources.storage]]
       }
     }
   }

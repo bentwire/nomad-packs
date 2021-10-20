@@ -61,11 +61,9 @@ variable "resources" {
   type = object({
     cpu    = number
     memory = number
-    storage = number
   })
   default = {
     cpu    = 800,
-    memory = 900,
-    storage = 2000,
+    memory = 900
   }
 }

@@ -9,9 +9,3 @@
 [[- end -]]
 
 // only deploys to a region if specified
-
-[[- define "region" -]]
-[[- if not (eq .minecraft.region "") -]]
-region = [[ .minecraft.region | quote]]
-[[- end -]]
-[[- end -]]
