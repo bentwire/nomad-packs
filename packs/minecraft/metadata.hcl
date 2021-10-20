@@ -1,5 +1,5 @@
 app {
-  url    = "https://www.nomadproject.io/docs/autoscaling"
+  url    = "minecraft"
   author = "Burkey - HashiCorp"
 }
 
