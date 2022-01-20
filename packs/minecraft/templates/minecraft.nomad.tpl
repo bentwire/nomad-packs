@@ -22,7 +22,7 @@ job [[ template "job_name" . ]] {
       }
       //EULA
       artifact {
-          source = "[[.minecraft.server_url]]"
+          source = "[[.minecraft.eula_url]]"
           mode = "file"
           destination = "[[ .minecraft.java_path ]]"
 
