@@ -24,7 +24,7 @@ job [[ template "job_name" . ]] {
       artifact {
           source = "[[.minecraft.eula_url]]"
           mode = "file"
-          destination = "[[ .minecraft.java_path ]]"
+          destination = "eula.txt"
 
       }
 
