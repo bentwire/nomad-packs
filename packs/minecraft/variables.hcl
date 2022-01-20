@@ -8,7 +8,7 @@ variable "job_name" {
 variable "datacenters" {
   description = "A list of datacenters in the region which are eligible for task placement"
   type        = list(string)
-  default     = ["dc1"]
+  default     = ["avalon"]
 }
 
 variable "region" {
@@ -41,7 +41,7 @@ variable "eula_url" {
 variable "jvm_max_mem" {
     description = "Java runtime maximum memory"
     type = string
-    default = "-Xmx768M"
+    default = "-Xmx4096M"
 }
 
 variable "jvm_min_mem" {
@@ -63,7 +63,7 @@ variable "resources" {
     memory = number
   })
   default = {
-    cpu    = 800,
-    memory = 900
+    cpu    = 4000,
+    memory = 6000
   }
 }
