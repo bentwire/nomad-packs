@@ -4,16 +4,18 @@ job [[ template "job_name" . ]] {
   
   group "minecraft" {
     network {
-      // ports
-      port "rcon" {
-        to = [[ .minecraft.rcon_port ]]
-      }
+      mode = "bridge"
+      
       port "server" {
         to = [[ .minecraft.mc_port ]]
       }
+      
+      port "rcon" {
+        to = [[ .minecraft.rcon_port ]]
+      }      
     }
   
-      // services
+    // services
     service {
       name = "minecraft-server"
       port = "[[ .minecraft.mc_port ]]"
