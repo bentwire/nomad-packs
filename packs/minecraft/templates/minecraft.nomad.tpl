@@ -2,7 +2,18 @@ job [[ template "job_name" . ]] {
   region      = [[ .minecraft.region | quote ]]
   datacenters = [ [[ range $idx, $dc := .minecraft.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
   
-    // services
+  group "minecraft" {
+    network {
+      // ports
+      port "rcon" {
+        to = [[ .minecraft.rcon_port ]]
+      }
+      port "server" {
+        to = [[ .minecraft.mc_port ]]
+      }
+    }
+  
+      // services
     service {
       name = "minecraft-server"
       port = "[[ .minecraft.mc_port ]]"
@@ -21,17 +32,7 @@ job [[ template "job_name" . ]] {
       }
     }
 
-  group "minecraft" {
-    network {
-      // ports
-      port "rcon" {
-        to = [[ .minecraft.rcon_port ]]
-      }
-      port "server" {
-        to = [[ .minecraft.mc_port ]]
-      }
-    }
-    task "minecraft" {
+   task "minecraft" {
       driver = "java"
       config {
         jar_path = "[[ .minecraft.java_path ]]"
