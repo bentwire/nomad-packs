@@ -1,9 +1,33 @@
 job [[ template "job_name" . ]] {
   region      = [[ .minecraft.region | quote ]]
   datacenters = [ [[ range $idx, $dc := .minecraft.datacenters ]][[if $idx]],[[end]][[ $dc | quote ]][[ end ]] ]
+  
+    // services
+    service {
+      name = "minecraft-server"
+      port = "[[ .minecraft.mc_port ]]"
+
+      connect {
+        sidecar_service {}
+      }
+    }
+
+    service {
+      name = "minecraft-rcon"
+      port = "[[ .minecraft.rcon_port ]]"
+
+      connect {
+        sidecar_service {}
+      }
+    }
+
   group "minecraft" {
     network {
-      port "access" {
+      // ports
+      port "rcon" {
+        to = [[ .minecraft.rcon_port ]]
+      }
+      port "server" {
         to = [[ .minecraft.mc_port ]]
       }
     }
