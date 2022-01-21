@@ -19,9 +19,15 @@ variable "region" {
 
 
 variable "mc_port" {
-  description = "The Nomad client port that routes to the minecraft"
+  description = "The Nomad client port that routes to the minecraft server port"
   type        = number
   default     = 25565
+}
+
+variable "rcon_port" {
+  description = "The Nomad client port that routes to the minecraft rcon port"
+  type        = number
+  default     = 25575
 }
 
 #1.17.1
