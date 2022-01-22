@@ -17,21 +17,21 @@ job [[ template "job_name" . ]] {
   
     // services
     service {
-      name = "minecraft-server"
+      name = "server"
       port = "[[ .minecraft.mc_port ]]"
 
-      connect {
-        sidecar_service {}
-      }
+#      connect {
+#        sidecar_service {}
+#      }
     }
 
     service {
-      name = "minecraft-rcon"
+      name = "rcon"
       port = "[[ .minecraft.rcon_port ]]"
 
-      connect {
-        sidecar_service {}
-      }
+#      connect {
+#        sidecar_service {}
+#      }
     }
 
    task "minecraft" {
